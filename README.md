@@ -27,14 +27,10 @@ This is a Python-based Todo application featuring both a web interface (using Fa
     ```
 
 2.  **Create a virtual environment and activate it:**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-    ```
 
-3.  **Install dependencies:**
+    **Install dependencies:**
     ```bash
-    pip install -r requirements.txt
+    uv sync
     ```
 
 ## Running the Application
@@ -44,7 +40,7 @@ This is a Python-based Todo application featuring both a web interface (using Fa
 To run the FastAPI web application, use Uvicorn:
 
 ```bash
-uvicorn web.main:app --reload
+uv run uvicorn web.main:app --reload
 ```
 
 The API will be available at `http://127.0.0.1:8000`. You can access the interactive API documentation (Swagger UI) at `http://127.0.0.1:8000/docs`.
@@ -55,29 +51,29 @@ To use the CLI, run commands from the project root:
 
 #### Add a new todo:
 ```bash
-python -m cli.main add "Buy groceries" -d "Milk, eggs, bread"
+uv run python -m cli.main add "Buy groceries" -d "Milk, eggs, bread"
 ```
 
 #### List all todos:
 ```bash
-python -m cli.main list
+uv run python -m cli.main list
 ```
 
 #### Get a specific todo by ID:
 (Replace `<todo_id>` with an actual ID from the list command output)
 ```bash
-python -m cli.main get <todo_id>
+uv run python -m cli.main get <todo_id>
 ```
 
 #### Update a todo:
 ```bash
-python -m cli.main update <todo_id> --title "Buy organic groceries" --completed
-python -m cli.main update <todo_id> --not-completed
+uv run python -m cli.main update <todo_id> --title "Buy organic groceries" --completed
+uv run python -m cli.main update <todo_id> --not-completed
 ```
 
 #### Delete a todo:
 ```bash
-python -m cli.main delete <todo_id>
+uv run python -m cli.main delete <todo_id>
 ```
 
 ## Running Tests
@@ -85,5 +81,5 @@ python -m cli.main delete <todo_id>
 To run the unit tests for the core logic, make sure you have `pytest` installed (included in `requirements.txt`) and run:
 
 ```bash
-pytest tests/
+uv run pytest tests/
 ```
